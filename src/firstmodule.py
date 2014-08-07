@@ -4,19 +4,24 @@ Created on 6 Aug 2014
 @author: jin
 '''
 import random
-import linecache
+import Tkinter
 
-# in_file = open("text.txt","r")
-# text = in_file.read()
-# in_file.close()
-# words = text.split()
+
+# labl = Tkinter.label(text = "See me")
+# labl.pack()
+# labl.mainloop()
+
+m = Tkinter.Tk()
+m.mainloop()
+
 
 in_file = open("text.txt").read().splitlines()
 myline = random.choice(in_file)
 
 words = myline.split()
+wordslen = len(words)
 random.shuffle(words)
 
 for i in words:
     print i
- 
+
