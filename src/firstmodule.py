@@ -3,13 +3,43 @@ Created on 6 Aug 2014
 
 @author: jin
 '''
-import random
+#import random
 import Tkinter
 from Tkinter import Tk, Frame, Button, Listbox, BOTH
 from dal import dalfunc
+from Crypto.SelfTest import SelfTestError
+from gi.overrides.keysyms import End
 
-# #Create Window frame
+#Add to list function
+# def fillList():
+#     
+#     (a1, a2) = dalfunc()
+#         
+#     ListBox1 = Listbox()
+#     count = 1
+#         
+#     for i in a2:
+#         ListBox1.insert(count, i) 
+#         count=count+1
+#     
+#     ListBox1.pack() 
+
+# class DataManager(Listbox):
+# 
+#         
+#         (a1, a2) = dalfunc()
+#                    
+#         def reloadData(self):
+#             count = 1
+#             for i in self.a2:
+#                 listBox1.insert(count, i) 
+#                 count=count+1
+                
+        
+#Create Window frame
 class Example(Frame):
+    listBox1 = Listbox()
+     
     def __init__(self, parent):
         Frame.__init__(self, parent, background="white")   
         self.parent = parent        
@@ -19,20 +49,24 @@ class Example(Frame):
         self.parent.title("Gurbani Brain Training")
         self.pack(fill=BOTH, expand=1)
         QuitButton = Button(self, text ="Quit", command=self.quit)
-        QuitButton.place(x=50, y=50)
+        QuitButton.place(x=100, y=100)
+        QuitButton.pack()
         
-        (a1, a2) = dalfunc()
+        RandButton = Button(self, text ="Random", command=self.reloadData)
+        RandButton.place(x=100, y=100)   
+        self.listBox1.pack()
+             
+        RandButton.pack()
         
-        #ListBox1 = Listbox()
-        
-        for i in a2:
-            print i
-            
-        #ListBox1.
-        
-
-
-# #Set widgets in frame
+    def reloadData(self):
+            (a1, a2) = dalfunc()
+            self.listBox1.delete(0, End)
+            count = 1
+            for i in a2:
+                self.listBox1.insert(count, i) 
+                count=count+1
+    
+#Set widgets in frame
 def main():
     root = Tkinter.Tk()
     root.geometry("750x450+300+300")
@@ -44,6 +78,3 @@ if __name__ == '__main__':
     main() 
 
 
-
-        #for i in a1:
-         #   print i
