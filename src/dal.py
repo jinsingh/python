@@ -17,4 +17,4 @@ def dalfunc():
 #for i in words:
 #   print i
      
-    return wordslen, words
+    return wordslen, words, myline
